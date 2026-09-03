@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design tokens — the single place to restyle the whole site.
+ * Colors are "R G B" triplets (no commas) so Tailwind can apply opacity via
+ * bg-navy/50 etc. Swap values here; every component uses the Tailwind names
+ * below (navy, brick, ink, …), never raw hex codes.
+ */
+:root {
+  --color-navy: 0 48 135;
+  --color-navy-dark: 0 33 94;
+
+  --color-brick: 200 57 43;
+  --color-brick-dark: 122 35 26;
+  --color-brick-light: 242 235 230;
+
+  --color-ink: 47 47 47;
+  --color-muted: 118 118 118;
+  --color-cream: 242 235 230;
+  --color-offblack: 26 26 24;
+
+  --font-display: 'Playfair Display', serif;
+  --font-sans: 'Barlow', sans-serif;
+  --font-label: 'JetBrains Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-ink font-sans antialiased;
+}

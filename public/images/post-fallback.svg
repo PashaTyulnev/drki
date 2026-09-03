@@ -1,0 +1,23 @@
+<svg width="640" height="400" viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="640" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7a231a" />
+      <stop offset="0.55" stop-color="#c8392b" />
+      <stop offset="1" stop-color="#c2531f" />
+    </linearGradient>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" fill-opacity="0.16" />
+    </pattern>
+  </defs>
+
+  <rect width="640" height="400" fill="url(#bg)" />
+  <rect width="640" height="400" fill="url(#dots)" />
+
+  <g transform="translate(320,168)" stroke="#ffffff" stroke-opacity="0.85" stroke-width="2.2" fill="none" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M-46,-26 C-46,-32 -40,-36 -32,-36 L-4,-36 C-1,-36 0,-35 0,-32 L0,34 C0,31 -1,30 -4,30 L-32,30 C-40,30 -46,26 -46,20 Z" />
+    <path d="M46,-26 C46,-32 40,-36 32,-36 L4,-36 C1,-36 0,-35 0,-32 L0,34 C0,31 1,30 4,30 L32,30 C40,30 46,26 46,20 Z" />
+  </g>
+
+  <text x="320" y="256" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="22" fill="#ffffff" fill-opacity="0.92">Deutsch-Russisches Kulturinstitut</text>
+  <text x="320" y="284" text-anchor="middle" font-family="'Courier New', monospace" font-size="11" letter-spacing="3" fill="#ffffff" fill-opacity="0.55">DRKI E.V. · DRESDEN</text>
+</svg>
