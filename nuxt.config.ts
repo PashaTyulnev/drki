@@ -10,6 +10,7 @@ export default defineNuxtConfig({
       title: 'DRKI e.V. – Deutsch-Russisches Kulturinstitut Dresden',
       htmlAttrs: { lang: 'de' },
       link: [
+        { rel: 'icon', type: 'image/png', href: '/images/logo-color.png' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         {

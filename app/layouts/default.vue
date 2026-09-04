@@ -6,7 +6,13 @@ const navLinks = [
   { label: 'Projekte', to: '/projekte' },
   { label: 'Bibliothek', to: '/bibliothek' },
   { label: 'Über uns', to: '/ueber-uns' },
-  { label: 'Chronik/Archiv', to: '/chronik-archiv' },
+  { label: 'Archiv', to: '/chronik-archiv' },
+]
+
+const socialLinks = [
+  { label: 'Facebook', href: 'https://www.facebook.com/drkidresden/', icon: 'facebook' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@deutsch-russischeskulturin8168', icon: 'youtube' },
+  { label: 'Telegram', href: 'https://telegram.me/drki1993', icon: 'telegram' },
 ]
 
 const mobileOpen = ref(false)
@@ -32,12 +38,12 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
           ? 'border-black/10 bg-white/85 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.15)] backdrop-blur-md'
           : 'border-transparent bg-transparent'"
       >
-        <div class="flex items-center justify-between px-4 py-3.5 sm:px-6">
-          <NuxtLink to="/" class="flex items-center">
+        <div class="flex items-center justify-between gap-4 px-4 py-3.5 sm:px-6">
+          <NuxtLink to="/" class="flex shrink-0 items-center">
             <img src="/images/logo-color.png" alt="DRKI e.V." class="h-10 w-auto sm:h-11">
           </NuxtLink>
 
-          <nav class="hidden items-center gap-5 lg:flex xl:gap-7">
+          <nav class="hidden items-center gap-3 lg:flex xl:gap-6">
             <NuxtLink
               v-for="link in navLinks"
               :key="link.to"
@@ -49,10 +55,23 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
             </NuxtLink>
           </nav>
 
-          <div class="flex items-center gap-4">
+          <div class="flex shrink-0 items-center gap-2.5">
+            <div class="hidden items-center gap-2 border-r border-black/10 pr-2.5 lg:flex">
+              <a
+                v-for="social in socialLinks"
+                :key="social.href"
+                :href="social.href"
+                target="_blank"
+                rel="noopener"
+                :aria-label="social.label"
+                class="text-ink/40 transition hover:text-ink"
+              >
+                <SocialIcon :icon="social.icon" />
+              </a>
+            </div>
             <a
               href="#spenden"
-              class="hidden rounded-full bg-navy px-5 py-2.5 font-label text-xs uppercase tracking-wide text-white transition hover:bg-navy-dark sm:inline-block"
+              class="hidden whitespace-nowrap rounded-full bg-navy px-5 py-2.5 font-label text-xs uppercase tracking-wide text-white transition hover:bg-navy-dark sm:inline-block"
             >
               Jetzt spenden
             </a>
@@ -83,6 +102,20 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
             <a href="#spenden" class="mt-2 rounded-full bg-navy px-5 py-2.5 text-center font-label text-xs uppercase tracking-wide text-white">
               Jetzt spenden
             </a>
+
+            <div class="mt-3 flex items-center justify-center gap-5 border-t border-black/10 pt-4">
+              <a
+                v-for="social in socialLinks"
+                :key="social.href"
+                :href="social.href"
+                target="_blank"
+                rel="noopener"
+                :aria-label="social.label"
+                class="text-ink/40 transition hover:text-ink"
+              >
+                <SocialIcon :icon="social.icon" />
+              </a>
+            </div>
           </nav>
         </div>
       </div>
