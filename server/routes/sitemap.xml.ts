@@ -1,4 +1,5 @@
 const WP_EVENTS_API = 'https://cms.drki.de/wp-json/tribe/events/v1/events'
+const WP_POSTS_API = 'https://cms.drki.de/wp-json/wp/v2/posts'
 
 const PROJECT_SLUGS = [
   'dostojewski-in-dresden',
@@ -58,6 +59,18 @@ export default defineEventHandler(async (event) => {
     }
   } catch {
     // WordPress backend unreachable — ship the sitemap without event pages
+    // rather than failing the whole request.
+  }
+
+  try {
+    const posts = await $fetch<Array<{ slug: string }>>(WP_POSTS_API, {
+      query: { per_page: 50, lang: 'de', _fields: 'slug' },
+    })
+    for (const p of posts) {
+      entries.push(url(`/aktuelles/${p.slug}`, '0.5', 'monthly'))
+    }
+  } catch {
+    // WordPress backend unreachable — ship the sitemap without post pages
     // rather than failing the whole request.
   }
 

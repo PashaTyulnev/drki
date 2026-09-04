@@ -29,12 +29,10 @@ usePageSeo({
     </p>
 
     <div v-else class="mt-12 grid gap-px overflow-hidden rounded-2xl border border-black/10 bg-black/10 sm:grid-cols-2 lg:grid-cols-3">
-      <a
+      <NuxtLink
         v-for="post in posts"
         :key="post.id"
-        :href="post.link"
-        target="_blank"
-        rel="noopener"
+        :to="`/aktuelles/${post.slug}`"
         class="group flex flex-col bg-white p-6 transition hover:bg-cream"
       >
         <div class="aspect-[16/10] w-full overflow-hidden rounded-xl bg-cream">
@@ -58,7 +56,7 @@ usePageSeo({
         <span class="mt-4 font-label text-xs uppercase tracking-wide text-ink/50 group-hover:text-ink">
           Weiterlesen →
         </span>
-      </a>
+      </NuxtLink>
     </div>
   </section>
 </template>
