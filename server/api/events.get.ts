@@ -8,7 +8,7 @@ interface TribeEvent {
   cost: string
   url: string
   venue?: { venue?: string; city?: string }
-  image?: { url: string } | false
+  image?: { url: string; sizes?: Record<string, { url: string }> } | false
 }
 
 interface TribeEventsResponse {
@@ -35,6 +35,8 @@ export default defineEventHandler(async (event) => {
     cost: e.cost || null,
     venue: e.venue?.venue || null,
     url: e.url,
-    image: e.image ? e.image.url : null,
+    // Card thumbnails are ~350px wide — "medium" covers that at retina
+    // density without shipping the full-resolution original.
+    image: e.image ? pickImageSize(e.image.sizes, e.image.url, ['medium', 'large']) : null,
   }))
 })

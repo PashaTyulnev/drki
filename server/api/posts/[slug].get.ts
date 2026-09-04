@@ -8,7 +8,11 @@ interface WpPost {
   excerpt: { rendered: string }
   content: { rendered: string }
   _embedded?: {
-    'wp:featuredmedia'?: Array<{ source_url: string; alt_text: string }>
+    'wp:featuredmedia'?: Array<{
+      source_url: string
+      alt_text: string
+      media_details?: { sizes?: Record<string, { source_url: string }> }
+    }>
   }
 }
 
@@ -24,6 +28,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const post = posts[0]
+  const media = post._embedded?.['wp:featuredmedia']?.[0]
 
   return {
     id: post.id,
@@ -32,7 +37,9 @@ export default defineEventHandler(async (event) => {
     title: stripHtml(post.title.rendered),
     excerpt: stripHtml(post.excerpt.rendered),
     html: post.content.rendered,
-    image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? null,
-    imageAlt: post._embedded?.['wp:featuredmedia']?.[0]?.alt_text || '',
+    // Hero image is full-bleed at ~768px — "large"/"medium_large" match
+    // that without shipping the full original.
+    image: pickImageSize(media?.media_details?.sizes, media?.source_url ?? null, ['large', 'medium_large']),
+    imageAlt: media?.alt_text || '',
   }
 })

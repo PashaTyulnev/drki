@@ -10,7 +10,7 @@ interface TribeEventDetail {
   url: string
   venue?: { venue?: string; address?: string; city?: string }
   organizer?: Array<{ organizer?: string }>
-  image?: { url: string } | false
+  image?: { url: string; sizes?: Record<string, { url: string }> } | false
 }
 
 // The API wraps the real content in tribe-events-schedule / price / venue /
@@ -38,7 +38,9 @@ export default defineEventHandler(async (event) => {
     cost: e.cost || null,
     venue: e.venue?.venue || null,
     organizer: e.organizer?.[0]?.organizer || null,
-    image: e.image ? e.image.url : null,
+    // Hero image is full-bleed at ~768px — "large" matches that without
+    // shipping the full-resolution original.
+    image: e.image ? pickImageSize(e.image.sizes, e.image.url, ['large', 'medium']) : null,
     sourceUrl: e.url,
   }
 })
