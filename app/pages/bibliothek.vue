@@ -18,7 +18,7 @@ usePageSeo({
       <div class="flex flex-wrap items-start justify-between gap-6">
         <h1 class="font-display text-4xl leading-tight text-ink">Bibliothek</h1>
         <a
-          href="https://drki.de/dosto-bib/"
+          href="https://cms.drki.de/dosto-bib/"
           target="_blank"
           rel="noopener"
           class="inline-flex shrink-0 items-center gap-2 rounded-full bg-navy px-6 py-3 font-label text-xs uppercase tracking-wide text-white transition hover:bg-navy-dark"

@@ -9,12 +9,12 @@ const documents = [
   {
     title: 'Dienstleistungen des Servicebüros',
     hint: 'Übersicht (PDF)',
-    href: 'https://drki.de/wp-content/uploads/2026/03/L2026Dienstleistungen-des-Servicebueros.pdf',
+    href: 'https://cms.drki.de/wp-content/uploads/2026/03/L2026Dienstleistungen-des-Servicebueros.pdf',
   },
   {
     title: 'Список документов',
     hint: 'Für ОЗП und Akt der persönlichen Vorsprache (PDF)',
-    href: 'https://drki.de/wp-content/uploads/2026/03/L2026%D0%94%D0%BB%D1%8F-%D0%BE%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%9E%D0%97%D0%9F-%D0%B8-%D0%90%D0%BA%D1%82%D0%B0-%D0%BE-%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D0%B9-%D1%8F%D0%B2%D0%BA%D0%B5-%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BC%D0%BE-%D0%BF%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D1%8C-%D1%81%D0%BB%D0%B5%D0%B4%D1%83%D1%8E%D1%89%D1%83%D1%8E-%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8E-%D0%B8-%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B.pdf',
+    href: 'https://cms.drki.de/wp-content/uploads/2026/03/L2026%D0%94%D0%BB%D1%8F-%D0%BE%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%9E%D0%97%D0%9F-%D0%B8-%D0%90%D0%BA%D1%82%D0%B0-%D0%BE-%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D0%B9-%D1%8F%D0%B2%D0%BA%D0%B5-%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BC%D0%BE-%D0%BF%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D1%8C-%D1%81%D0%BB%D0%B5%D0%B4%D1%83%D1%8E%D1%89%D1%83%D1%8E-%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8E-%D0%B8-%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B.pdf',
   },
 ]
 </script>
