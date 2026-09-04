@@ -1,6 +1,13 @@
 <script setup lang="ts">
 const route = useRoute()
 const { data, error } = await useFetch(`/api/pages/${route.params.slug}`)
+
+usePageSeo({
+  title: data.value?.title ? `${data.value.title} – Chronik & Archiv – DRKI e.V.` : 'Chronik & Archiv – DRKI e.V.',
+  description: stripToDescription(data.value?.html) || '30 Jahre Vereinsgeschichte des Deutsch-Russischen Kulturinstituts e.V. Dresden.',
+  path: `/chronik-archiv/${route.params.slug}`,
+  noindex: !!error.value,
+})
 </script>
 
 <template>

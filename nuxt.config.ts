@@ -9,6 +9,11 @@ export default defineNuxtConfig({
     head: {
       title: 'DRKI e.V. – Deutsch-Russisches Kulturinstitut Dresden',
       htmlAttrs: { lang: 'de' },
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'theme-color', content: '#101014' },
+        { name: 'format-detection', content: 'telephone=no' },
+      ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/images/logo-color.png' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },

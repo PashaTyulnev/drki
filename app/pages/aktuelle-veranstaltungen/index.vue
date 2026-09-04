@@ -18,6 +18,12 @@ function formatTime(iso: string) {
     minute: '2-digit',
   })
 }
+
+usePageSeo({
+  title: 'Veranstaltungen – DRKI e.V.',
+  description: 'Aktuelle Veranstaltungen, Lesungen, Konzerte und Ausstellungen im Deutsch-Russischen Kulturinstitut Dresden.',
+  path: '/aktuelle-veranstaltungen',
+})
 </script>
 
 <template>

@@ -1,4 +1,4 @@
-const WP_EVENTS_API = 'http://cdn.drki.de/wp-json/tribe/events/v1/events'
+const WP_EVENTS_API = 'https://cms.drki.de/wp-json/tribe/events/v1/events'
 
 interface TribeEvent {
   id: number

@@ -6,6 +6,12 @@ const { data: posts, pending, error } = await useFetch('/api/posts', {
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' })
 }
+
+usePageSeo({
+  title: 'Aktuelles – DRKI e.V.',
+  description: 'Berichte von Veranstaltungen, Vorträgen und Begegnungen im Deutsch-Russischen Kulturinstitut Dresden.',
+  path: '/aktuelles',
+})
 </script>
 
 <template>

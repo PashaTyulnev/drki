@@ -17,6 +17,51 @@ function formatTime(iso: string) {
     minute: '2-digit',
   })
 }
+
+usePageSeo({
+  title: ev.value?.title ? `${ev.value.title} – DRKI e.V.` : 'Veranstaltung – DRKI e.V.',
+  description: stripToDescription(ev.value?.description) || 'Veranstaltung im Deutsch-Russischen Kulturinstitut Dresden.',
+  path: `/aktuelle-veranstaltungen/${route.params.id}`,
+  image: ev.value?.image || undefined,
+  noindex: !!error.value,
+})
+
+if (ev.value) {
+  useHead({
+    script: [
+      {
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Event',
+          name: ev.value.title,
+          startDate: ev.value.start.replace(' ', 'T'),
+          endDate: ev.value.end.replace(' ', 'T'),
+          eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+          eventStatus: 'https://schema.org/EventScheduled',
+          location: {
+            '@type': 'Place',
+            name: ev.value.venue || 'Deutsch-Russisches Kulturinstitut e.V.',
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: 'Zittauer Straße 29',
+              postalCode: '01099',
+              addressLocality: 'Dresden',
+              addressCountry: 'DE',
+            },
+          },
+          image: ev.value.image ? [ev.value.image] : undefined,
+          description: stripToDescription(ev.value.description, 500),
+          organizer: {
+            '@type': 'Organization',
+            name: ev.value.organizer || 'Deutsch-Russisches Kulturinstitut e.V.',
+            url: SITE_URL,
+          },
+        }),
+      },
+    ],
+  })
+}
 </script>
 
 <template>

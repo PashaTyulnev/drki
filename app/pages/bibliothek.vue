@@ -4,6 +4,12 @@ const rubriken = [
   'Kriminalromane', 'Kinderliteratur', 'Nachschlagewerke', 'Wörterbücher',
   'Lehrbücher', 'Geschichte', 'Zeitschriften',
 ]
+
+usePageSeo({
+  title: 'Bibliothek – DRKI e.V.',
+  description: 'Die Dostojewskij-Bibliothek des DRKI: die drittgrößte russischsprachige Bibliothek Deutschlands, mit zwölf Rubriken von Klassik bis Kinderliteratur.',
+  path: '/bibliothek',
+})
 </script>
 
 <template>

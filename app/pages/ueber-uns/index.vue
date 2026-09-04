@@ -1,5 +1,11 @@
 <script setup lang="ts">
 const { data } = await useFetch('/api/pages/ueber-uns')
+
+usePageSeo({
+  title: 'Über uns – DRKI e.V.',
+  description: stripToDescription(data.value?.html) || 'Geschichte, Team und Arbeit des Deutsch-Russischen Kulturinstituts e.V. Dresden seit 1993.',
+  path: '/ueber-uns',
+})
 </script>
 
 <template>

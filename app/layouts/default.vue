@@ -15,6 +15,35 @@ const socialLinks = [
   { label: 'Telegram', href: 'https://telegram.me/drki1993', icon: 'telegram' },
 ]
 
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        name: 'Deutsch-Russisches Kulturinstitut e.V.',
+        alternateName: 'DRKI e.V.',
+        url: SITE_URL,
+        logo: `${SITE_URL}/images/logo-color.png`,
+        image: `${SITE_URL}/images/dresden-skyline.jpg`,
+        description: 'Das Deutsch-Russische Kulturinstitut fördert seit 1993 den Dialog zwischen den deutsch- und russischsprachigen Kulturräumen durch Bibliothek, Veranstaltungen, Ausstellungen und Konzerte.',
+        foundingDate: '1993',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Zittauer Straße 29',
+          postalCode: '01099',
+          addressLocality: 'Dresden',
+          addressCountry: 'DE',
+        },
+        telephone: '+49-351-8014160',
+        email: 'drkidresden@drki.de',
+        sameAs: socialLinks.map((s) => s.href),
+      }),
+    },
+  ],
+})
+
 const mobileOpen = ref(false)
 const scrolled = ref(false)
 

@@ -1,3 +1,11 @@
+<script setup lang="ts">
+usePageSeo({
+  title: 'Kontakt – DRKI e.V.',
+  description: 'Adresse, Bürozeiten und Spendenkonto des Deutsch-Russischen Kulturinstituts e.V., Zittauer Straße 29, 01099 Dresden.',
+  path: '/kontakt',
+})
+</script>
+
 <template>
   <div>
     <section class="mx-auto max-w-6xl px-6 py-16">

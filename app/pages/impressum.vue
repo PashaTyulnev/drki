@@ -1,5 +1,11 @@
 <script setup lang="ts">
 const { data } = await useFetch('/api/pages/impressum')
+
+usePageSeo({
+  title: 'Impressum – DRKI e.V.',
+  description: 'Impressum des Deutsch-Russischen Kulturinstituts e.V. Dresden.',
+  path: '/impressum',
+})
 </script>
 
 <template>

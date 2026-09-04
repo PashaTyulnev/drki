@@ -1,5 +1,11 @@
 <script setup lang="ts">
 const { data } = await useFetch('/api/pages/satzung')
+
+usePageSeo({
+  title: 'Satzung – DRKI e.V.',
+  description: stripToDescription(data.value?.html) || 'Die Vereinssatzung des Deutsch-Russischen Kulturinstituts e.V. Dresden.',
+  path: '/ueber-uns/satzung',
+})
 </script>
 
 <template>

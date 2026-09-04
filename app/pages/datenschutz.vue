@@ -1,5 +1,12 @@
 <script setup lang="ts">
 const { data } = await useFetch('/api/pages/datenschutz')
+
+usePageSeo({
+  title: 'Datenschutz – DRKI e.V.',
+  description: 'Datenschutzerklärung des Deutsch-Russischen Kulturinstituts e.V. Dresden.',
+  path: '/datenschutz',
+  noindex: true,
+})
 </script>
 
 <template>

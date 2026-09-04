@@ -9,6 +9,12 @@ const projects = [
   { title: 'Städtepartnerschaft Dresden / St. Petersburg', slug: 'staedtepartnerschaft-dresden-st-petersburg' },
   { title: 'Brücken Bauen', slug: 'bruecken-bauen' },
 ]
+
+usePageSeo({
+  title: 'Projekte – DRKI e.V.',
+  description: 'Acht Projekte des Deutsch-Russischen Kulturinstituts: von Dostojewski-Gedenken über die Dresdner Musikklubs bis zur Städtepartnerschaft mit St. Petersburg.',
+  path: '/projekte',
+})
 </script>
 
 <template>

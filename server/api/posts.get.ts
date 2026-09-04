@@ -1,4 +1,4 @@
-const WP_API_BASE = 'http://cdn.drki.de/wp-json/wp/v2'
+const WP_API_BASE = 'https://cms.drki.de/wp-json/wp/v2'
 
 interface WpPost {
   id: number

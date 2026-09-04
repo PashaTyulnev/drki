@@ -1,6 +1,13 @@
 <script setup lang="ts">
 const route = useRoute()
 const { data, error } = await useFetch(`/api/pages/${route.params.slug}`)
+
+usePageSeo({
+  title: data.value?.title ? `${data.value.title} – Projekte – DRKI e.V.` : 'Projekt – DRKI e.V.',
+  description: stripToDescription(data.value?.html) || 'Ein Projekt des Deutsch-Russischen Kulturinstituts e.V. Dresden.',
+  path: `/projekte/${route.params.slug}`,
+  noindex: !!error.value,
+})
 </script>
 
 <template>

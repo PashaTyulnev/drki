@@ -6,6 +6,12 @@ const sections = [
   { title: 'Gästeliste (Deutsch)', slug: 'gaeste' },
   { title: 'Gästeliste (Russisch)', slug: 'gaesteliste-auf-russisch' },
 ]
+
+usePageSeo({
+  title: 'Chronik & Archiv – DRKI e.V.',
+  description: '30 Jahre Vereinsgeschichte: vergangene Veranstaltungen, abgeschlossene Projekte, Publikationen und Gästelisten des Deutsch-Russischen Kulturinstituts.',
+  path: '/chronik-archiv',
+})
 </script>
 
 <template>
