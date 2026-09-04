@@ -1,15 +1,36 @@
 <script setup lang="ts">
+const PROJECTS = [
+  { title: 'Dostojewski in Dresden', slug: 'dostojewski-in-dresden' },
+  { title: 'Russische Spuren in Dresden', slug: 'russische-spuren-in-dresden' },
+  { title: 'Sächsische Spuren im russischsprachigen Ausland', slug: 'saechsische-spuren-im-russischsprachigem-ausland' },
+  { title: 'Musikalisch-theatralischer Kinder- und Jugendklub', slug: 'musikalisch-theatralischer-kinder-und-jugendklub' },
+  { title: 'INA Chor', slug: 'ina-chor' },
+  { title: 'Garnisonsfriedhof', slug: 'garnisonsfriedhof' },
+  { title: 'Städtepartnerschaft Dresden / St. Petersburg', slug: 'staedtepartnerschaft-dresden-st-petersburg' },
+  { title: 'Brücken Bauen', slug: 'bruecken-bauen' },
+]
+
 const navLinks = [
   { label: 'Willkommen', to: '/' },
   { label: 'Aktuelles', to: '/aktuelles' },
   { label: 'Veranstaltungen', to: '/aktuelle-veranstaltungen' },
-  { label: 'Projekte', to: '/projekte' },
+  {
+    label: 'Projekte',
+    to: '/projekte',
+    children: PROJECTS.map((p) => ({ label: p.title, to: `/projekte/${p.slug}` })),
+  },
   { label: 'Bibliothek', to: '/bibliothek' },
   { label: 'Über uns', to: '/ueber-uns' },
   { label: 'Archiv', to: '/chronik-archiv' },
   { label: 'Mitgliedschaft', to: '/mitgliedschaft' },
   { label: 'Kontakt', to: '/kontakt' },
 ]
+
+const mobileOpenSections = ref<Set<string>>(new Set())
+function toggleMobileSection(label: string) {
+  if (mobileOpenSections.value.has(label)) mobileOpenSections.value.delete(label)
+  else mobileOpenSections.value.add(label)
+}
 
 const socialLinks = [
   { label: 'Facebook', href: 'https://www.facebook.com/drkidresden/', icon: 'facebook' },
@@ -75,15 +96,35 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
           </NuxtLink>
 
           <nav class="hidden items-center gap-3 lg:flex xl:gap-6">
-            <NuxtLink
-              v-for="link in navLinks"
-              :key="link.to"
-              :to="link.to"
-              class="whitespace-nowrap font-label text-xs uppercase tracking-wide text-ink/60 transition hover:text-ink"
-              active-class="text-ink"
-            >
-              {{ link.label }}
-            </NuxtLink>
+            <div v-for="link in navLinks" :key="link.to" class="group relative">
+              <NuxtLink
+                :to="link.to"
+                class="flex items-center gap-1 whitespace-nowrap font-label text-xs uppercase tracking-wide text-ink/60 transition hover:text-ink"
+                active-class="text-ink"
+              >
+                {{ link.label }}
+                <svg
+                  v-if="link.children"
+                  width="8" height="8" viewBox="0 0 8 8" fill="none" class="mt-px opacity-50"
+                >
+                  <path d="M1 2.5 4 5.5 7 2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </NuxtLink>
+
+              <div
+                v-if="link.children"
+                class="invisible absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 translate-y-1 rounded-2xl border border-black/10 bg-white p-2 opacity-0 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.25)] transition-all duration-150 group-hover:visible group-hover:translate-y-2 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-2 group-focus-within:opacity-100"
+              >
+                <NuxtLink
+                  v-for="child in link.children"
+                  :key="child.to"
+                  :to="child.to"
+                  class="block rounded-xl px-3.5 py-2.5 font-sans text-sm leading-snug text-ink/75 transition hover:bg-cream hover:text-ink"
+                >
+                  {{ child.label }}
+                </NuxtLink>
+              </div>
+            </div>
           </nav>
 
           <div class="flex shrink-0 items-center gap-2.5">
@@ -121,15 +162,50 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
 
         <div v-if="mobileOpen" class="border-t border-black/10 lg:hidden">
           <nav class="flex flex-col gap-1 px-4 py-4">
-            <NuxtLink
-              v-for="link in navLinks"
-              :key="link.to"
-              :to="link.to"
-              class="rounded-lg px-3 py-2.5 font-label text-xs uppercase tracking-wide text-ink/80 hover:bg-cream"
-              @click="mobileOpen = false"
-            >
-              {{ link.label }}
-            </NuxtLink>
+            <template v-for="link in navLinks" :key="link.to">
+              <div v-if="link.children">
+                <button
+                  type="button"
+                  class="flex w-full items-center justify-between rounded-lg px-3 py-2.5 font-label text-xs uppercase tracking-wide text-ink/80 hover:bg-cream"
+                  @click="toggleMobileSection(link.label)"
+                >
+                  {{ link.label }}
+                  <svg
+                    width="10" height="10" viewBox="0 0 10 10" fill="none"
+                    class="shrink-0 transition-transform"
+                    :class="mobileOpenSections.has(link.label) ? 'rotate-180' : ''"
+                  >
+                    <path d="M1.5 3 5 7 8.5 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <div v-if="mobileOpenSections.has(link.label)" class="ml-3 mt-1 flex flex-col gap-0.5 border-l border-black/10 pl-3">
+                  <NuxtLink
+                    :to="link.to"
+                    class="rounded-lg px-3 py-2 font-sans text-xs text-ink/60 hover:bg-cream"
+                    @click="mobileOpen = false"
+                  >
+                    Übersicht
+                  </NuxtLink>
+                  <NuxtLink
+                    v-for="child in link.children"
+                    :key="child.to"
+                    :to="child.to"
+                    class="rounded-lg px-3 py-2 font-sans text-xs leading-snug text-ink/70 hover:bg-cream"
+                    @click="mobileOpen = false"
+                  >
+                    {{ child.label }}
+                  </NuxtLink>
+                </div>
+              </div>
+              <NuxtLink
+                v-else
+                :to="link.to"
+                class="rounded-lg px-3 py-2.5 font-label text-xs uppercase tracking-wide text-ink/80 hover:bg-cream"
+                @click="mobileOpen = false"
+              >
+                {{ link.label }}
+              </NuxtLink>
+            </template>
             <a href="#spenden" class="mt-2 rounded-full bg-navy px-5 py-2.5 text-center font-label text-xs uppercase tracking-wide text-white">
               Jetzt spenden
             </a>

@@ -3,6 +3,7 @@ const WP_API_BASE = 'https://cms.drki.de/wp-json/wp/v2'
 interface WpPage {
   id: number
   link: string
+  title: { rendered: string }
   content: { rendered: string }
 }
 
@@ -18,5 +19,5 @@ export default defineEventHandler(async (event) => {
   }
 
   const { title, html } = extractElementorContent(pages[0].content.rendered)
-  return { title, html, sourceUrl: pages[0].link }
+  return { title: title || stripHtml(pages[0].title.rendered), html, sourceUrl: pages[0].link }
 })

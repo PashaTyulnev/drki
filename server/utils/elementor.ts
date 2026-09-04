@@ -1,5 +1,26 @@
 import { parse, type HTMLElement } from 'node-html-parser'
 
+// Old published content still has absolute URLs baked in from before the
+// domain split (drki.de now serves this Nuxt app; WordPress moved to
+// cms.drki.de) — rewrite them so embedded images/links don't 404.
+function rewriteStaleDomain(html: string): string {
+  return html.replace(/https:\/\/drki\.de\//g, 'https://cms.drki.de/')
+}
+
+// Some older pages were never rebuilt in Elementor's container/widget
+// structure — their content.rendered is just plain semantic HTML (h2/p/img)
+// with Elementor's per-widget <style> blocks interspersed, plus an
+// auto-generated "Beiträge" (related posts) block at the end pulled from a
+// dynamic query. This strips both down to the real content.
+function extractPlainContent(root: HTMLElement): string {
+  root.querySelectorAll('style').forEach((el) => el.remove())
+  root.querySelectorAll('article').forEach((el) => el.remove())
+  root.querySelectorAll('h2, h3, h4').forEach((el) => {
+    if (el.text.trim() === 'Beiträge') el.remove()
+  })
+  return root.innerHTML.trim()
+}
+
 // This WordPress site builds every page with Elementor, which wraps real
 // content in many layers of layout <div>s. This pulls just the semantic
 // content back out (headings, text, address/bank-style lists) so it can be
@@ -8,6 +29,10 @@ import { parse, type HTMLElement } from 'node-html-parser'
 export function extractElementorContent(rawHtml: string): { title: string; html: string } {
   const root = parse(rawHtml)
   const widgets = root.querySelectorAll('[data-element_type="widget"]')
+
+  if (!widgets.length) {
+    return { title: '', html: rewriteStaleDomain(extractPlainContent(root)) }
+  }
 
   let title = ''
   const parts: string[] = []
@@ -88,5 +113,5 @@ export function extractElementorContent(rawHtml: string): { title: string; html:
     // content (or pull in a whole separate dynamic query) — skipped.
   }
 
-  return { title, html: parts.join('\n') }
+  return { title: rewriteStaleDomain(title), html: rewriteStaleDomain(parts.join('\n')) }
 }
