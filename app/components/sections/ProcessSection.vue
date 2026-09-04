@@ -3,7 +3,7 @@ const steps = [
   {
     n: '01',
     title: 'Spenden oder Mitglied werden',
-    text: 'Einmalig per PayPal oder als Mitglied ab 20 € im Jahr — jeder Beitrag hilft direkt.',
+    text: 'Einmalig per Überweisung oder als Mitglied ab 20 € im Jahr — jeder Beitrag hilft direkt.',
   },
   {
     n: '02',

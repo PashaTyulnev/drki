@@ -12,12 +12,21 @@
         </div>
 
         <div class="rounded-3xl bg-white p-8 shadow-sm sm:p-10">
-          <a
-            href="#"
-            class="flex w-full items-center justify-center gap-2 rounded-full bg-navy px-6 py-3.5 font-label text-sm font-medium text-white transition hover:bg-navy-dark"
-          >
-            Einfach mit PayPal spenden
-          </a>
+          <p class="font-label text-[11px] uppercase tracking-[0.16em] text-brick">Spendenkonto</p>
+          <dl class="mt-4 space-y-3 font-sans text-sm text-ink/80">
+            <div class="flex justify-between gap-4">
+              <dt class="text-ink/50">IBAN</dt>
+              <dd>DE26 8505 0300 3120 0768 04</dd>
+            </div>
+            <div class="flex justify-between gap-4">
+              <dt class="text-ink/50">BIC</dt>
+              <dd>OSDDDE81XXX</dd>
+            </div>
+            <div class="flex justify-between gap-4">
+              <dt class="text-ink/50">Empfänger</dt>
+              <dd class="text-right">Deutsch-Russisches Kulturinstitut e.V.</dd>
+            </div>
+          </dl>
           <p class="mt-4 font-sans text-sm leading-relaxed text-ink/60">
             Als eingetragener gemeinnütziger Verein stellen wir Ihnen gerne eine
             Spendenquittung aus.

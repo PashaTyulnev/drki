@@ -84,13 +84,6 @@
                 <dd class="text-right">Deutsch-Russisches Kulturinstitut e.V.</dd>
               </div>
             </dl>
-
-            <a
-              href="#"
-              class="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-navy px-6 py-3.5 font-label text-xs uppercase tracking-wide text-white transition hover:bg-navy-dark"
-            >
-              Einfach mit PayPal spenden
-            </a>
           </div>
         </div>
       </div>
