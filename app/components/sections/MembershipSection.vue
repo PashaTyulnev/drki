@@ -24,12 +24,12 @@ const benefits = [
         </div>
       </div>
 
-      <a
-        href="/kontakt"
+      <NuxtLink
+        to="/mitgliedschaft"
         class="mt-10 inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3 font-label text-xs uppercase tracking-wide text-white transition hover:bg-navy-dark"
       >
-        Jetzt Mitglied werden – ab 30 €/Jahr
-      </a>
+        Jetzt Mitglied werden – ab 20 €/Jahr
+      </NuxtLink>
     </div>
   </section>
 </template>

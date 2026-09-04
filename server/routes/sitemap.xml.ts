@@ -28,6 +28,7 @@ const STATIC_ROUTES: Array<{ path: string; priority: string; changefreq: string 
   { path: '/aktuelles', priority: '0.8', changefreq: 'daily' },
   { path: '/aktuelle-veranstaltungen', priority: '0.9', changefreq: 'daily' },
   { path: '/chronik-archiv', priority: '0.5', changefreq: 'monthly' },
+  { path: '/mitgliedschaft', priority: '0.7', changefreq: 'yearly' },
   { path: '/kontakt', priority: '0.6', changefreq: 'yearly' },
   { path: '/impressum', priority: '0.2', changefreq: 'yearly' },
 ]

@@ -3,7 +3,7 @@ const items = [
   {
     n: '01',
     title: 'Dostojewski-Bibliothek',
-    text: 'Über 3.000 russischsprachige Bücher, Zeitschriften und Kulturzeugnisse — für alle Mitglieder frei zugänglich.',
+    text: 'Über 26.000 russischsprachige Bücher, Zeitschriften und Kulturzeugnisse — für alle Mitglieder frei zugänglich.',
     image: '/images/gallery-institut-innen.jpg',
   },
   {

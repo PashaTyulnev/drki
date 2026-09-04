@@ -33,6 +33,7 @@ const year = new Date().getFullYear()
       <div>
         <p class="font-label text-[11px] uppercase tracking-[0.18em] text-white/40">Rechtliches</p>
         <ul class="mt-3 space-y-1.5 font-sans text-sm text-white/70">
+          <li><NuxtLink to="/mitgliedschaft" class="hover:text-white">Mitgliedschaft</NuxtLink></li>
           <li><NuxtLink to="/kontakt" class="hover:text-white">Kontakt</NuxtLink></li>
           <li><NuxtLink to="/datenschutz" class="hover:text-white">Datenschutz</NuxtLink></li>
           <li><NuxtLink to="/impressum" class="hover:text-white">Impressum</NuxtLink></li>

@@ -7,6 +7,8 @@ const navLinks = [
   { label: 'Bibliothek', to: '/bibliothek' },
   { label: 'Über uns', to: '/ueber-uns' },
   { label: 'Archiv', to: '/chronik-archiv' },
+  { label: 'Mitgliedschaft', to: '/mitgliedschaft' },
+  { label: 'Kontakt', to: '/kontakt' },
 ]
 
 const socialLinks = [
