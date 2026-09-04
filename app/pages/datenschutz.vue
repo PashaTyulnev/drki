@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { data } = await useFetch('/api/pages/datenschutz')
+const { consent, resetConsent } = useCookieConsent()
 
 usePageSeo({
   title: 'Datenschutz – DRKI e.V.',
@@ -14,6 +15,25 @@ usePageSeo({
     <h1 class="font-display text-4xl leading-tight text-ink">
       {{ data?.title || 'Datenschutzerklärung' }}
     </h1>
+
+    <ClientOnly>
+      <div class="mt-8 rounded-2xl border border-black/10 bg-cream p-6">
+        <p class="font-label text-[11px] uppercase tracking-[0.16em] text-brick">Cookie-Einstellungen</p>
+        <p class="mt-2 font-sans text-sm leading-relaxed text-ink/70">
+          Wir setzen selbst keine Tracking-Cookies. Einzig Ihre Entscheidung zu Google Fonts
+          speichern wir lokal in Ihrem Browser (kein Cookie, kein Tracking).
+          Aktueller Stand:
+          <strong class="text-ink">{{ consent === 'accepted' ? 'akzeptiert' : consent === 'declined' ? 'abgelehnt' : 'noch nicht entschieden' }}</strong>.
+        </p>
+        <button
+          type="button"
+          class="mt-4 rounded-full border border-black/15 px-5 py-2.5 font-label text-xs uppercase tracking-wide text-ink/70 transition hover:border-black/30 hover:text-ink"
+          @click="resetConsent"
+        >
+          Einstellung ändern
+        </button>
+      </div>
+    </ClientOnly>
 
     <div v-if="data?.html" class="legal-prose mt-10 font-sans text-base leading-relaxed text-ink/80" v-html="data.html" />
   </section>
