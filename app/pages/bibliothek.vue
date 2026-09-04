@@ -28,7 +28,7 @@ usePageSeo({
       </div>
 
       <img
-        src="/images/gallery-institut-innen.jpg"
+        src="https://cms.drki.de/wp-content/uploads/2022/05/pexels-polina-zimmerman-3747468-scaled.jpg"
         alt="Bibliothek im Deutsch-Russischen Kulturinstitut"
         class="mt-8 aspect-[16/9] w-full rounded-2xl object-cover"
       >
