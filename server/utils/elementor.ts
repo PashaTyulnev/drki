@@ -7,6 +7,23 @@ function rewriteStaleDomain(html: string): string {
   return html.replace(/https:\/\/drki\.de\//g, 'https://cms.drki.de/')
 }
 
+// Elementor's icon-list/feature-list widgets render bare <svg> icons sized
+// only by CSS classes on wrapper <div>s we don't keep (or by a widget
+// stylesheet <link> that points at a WP asset path with no matching classes
+// left to style). An unsized inline <svg> defaults to filling its container's
+// width, so on our side these icons render at full page width instead of as
+// small icons. Give any icon svg without explicit dimensions a fixed size,
+// and drop the now-useless stylesheet <link>.
+function sizeIcons(root: HTMLElement): void {
+  root.querySelectorAll('link').forEach((el) => el.remove())
+  root.querySelectorAll('svg').forEach((el) => {
+    if (el.getAttribute('width')) return
+    el.setAttribute('width', '1.25em')
+    el.setAttribute('height', '1.25em')
+    el.setAttribute('style', 'display:inline-block;vertical-align:-0.2em;flex-shrink:0')
+  })
+}
+
 // Some older pages were never rebuilt in Elementor's container/widget
 // structure — their content.rendered is just plain semantic HTML (h2/p/img)
 // with Elementor's per-widget <style> blocks interspersed, plus an
@@ -18,6 +35,7 @@ function extractPlainContent(root: HTMLElement): string {
   root.querySelectorAll('h2, h3, h4').forEach((el) => {
     if (el.text.trim() === 'Beiträge') el.remove()
   })
+  sizeIcons(root)
   return root.innerHTML.trim()
 }
 
@@ -75,6 +93,7 @@ export function extractElementorContent(rawHtml: string): { title: string; html:
     }
 
     if (widgetType === 'text-editor') {
+      sizeIcons(container)
       const html = container.innerHTML.trim()
       if (html) parts.push(html)
       continue
