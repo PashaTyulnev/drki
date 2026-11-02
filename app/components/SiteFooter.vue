@@ -42,7 +42,8 @@ const year = new Date().getFullYear()
     </div>
 
     <div class="border-t border-white/10 px-6 py-6 text-center font-sans text-xs text-white/40">
-      © {{ year }} DRKI e.V.
+      © {{ year }} DRKI e.V. · Made by
+      <a href="https://ptyulnev.de" target="_blank" rel="noopener" class="hover:text-white">ptyulnev.de</a>
     </div>
   </footer>
 </template>
